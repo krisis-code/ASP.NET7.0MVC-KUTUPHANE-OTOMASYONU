@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SinemaOtomasyonu")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+112936e7baa6ad49e754233db88825529a2d2bdf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+65345daf92ddba81fbeee9ddebbf22765bf3995e")]
 [assembly: System.Reflection.AssemblyProductAttribute("SinemaOtomasyonu")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SinemaOtomasyonu")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
