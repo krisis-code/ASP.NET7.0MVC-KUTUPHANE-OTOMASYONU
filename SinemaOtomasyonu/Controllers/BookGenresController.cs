@@ -20,7 +20,7 @@ namespace SinemaOtomasyonu.Controllers
         {
             List<BookGenres> objBookGenresList = _appDbContext.Genres.ToList();
 
-                return View();
+                return View(objBookGenresList);
         }
     }
 }

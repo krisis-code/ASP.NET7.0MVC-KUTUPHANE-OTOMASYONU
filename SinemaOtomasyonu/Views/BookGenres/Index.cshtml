@@ -1,3 +1,23 @@
-﻿
+﻿@model List<BookGenres>
 
-<h1>Kitap türü sayfası</h1>
+<h1>Kitap türleri</h1>
+<table class="table-bordered">
+   <thead>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>Kitap Türü</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var Genres in Model)
+        {
+            <tr>
+                <td>@Genres.BookGenreId</td>
+                <td>@Genres.BookGenreName</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
