@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Kris\\Desktop\\Yaz\u0131l\u0131m\\krisis-code\\ASP.NET7.0MVC-KUTUPHANE-OTOMASYONU\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Kris\\Desktop\\Yaz\u0131l\u0131m\\krisis-code\\ASP.NET7.0MVC-KUTUPHANE-OTOMASYONU\\Migrations\\20240511123911_initialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20240511123911_initialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F238BC65-3879-4462-A47F-860BDA010F7E}|SinemaOtomasyonu.csproj|c:\\users\\kris\\desktop\\yaz\u0131l\u0131m\\krisis-code\\asp.net7.0mvc-kutuphane-otomasyonu\\controllers\\bookgenrescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F238BC65-3879-4462-A47F-860BDA010F7E}|SinemaOtomasyonu.csproj|solutionrelative:controllers\\bookgenrescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F238BC65-3879-4462-A47F-860BDA010F7E}|SinemaOtomasyonu.csproj|c:\\users\\kris\\desktop\\yaz\u0131l\u0131m\\krisis-code\\asp.net7.0mvc-kutuphane-otomasyonu\\migrations\\20240511123911_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F238BC65-3879-4462-A47F-860BDA010F7E}|SinemaOtomasyonu.csproj|solutionrelative:migrations\\20240511123911_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F238BC65-3879-4462-A47F-860BDA010F7E}|SinemaOtomasyonu.csproj|c:\\users\\kris\\desktop\\yaz\u0131l\u0131m\\krisis-code\\asp.net7.0mvc-kutuphane-otomasyonu\\utility\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,6 +39,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "BookGenresController.cs",
+              "DocumentMoniker": "C:\\Users\\Kris\\Desktop\\Yaz\u0131l\u0131m\\krisis-code\\ASP.NET7.0MVC-KUTUPHANE-OTOMASYONU\\Controllers\\BookGenresController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BookGenresController.cs",
+              "ToolTip": "C:\\Users\\Kris\\Desktop\\Yaz\u0131l\u0131m\\krisis-code\\ASP.NET7.0MVC-KUTUPHANE-OTOMASYONU\\Controllers\\BookGenresController.cs",
+              "RelativeToolTip": "Controllers\\BookGenresController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-11T12:45:07.411Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "20240511123911_initialCreate.cs",
               "DocumentMoniker": "C:\\Users\\Kris\\Desktop\\Yaz\u0131l\u0131m\\krisis-code\\ASP.NET7.0MVC-KUTUPHANE-OTOMASYONU\\Migrations\\20240511123911_initialCreate.cs",
               "RelativeDocumentMoniker": "Migrations\\20240511123911_initialCreate.cs",
@@ -47,7 +64,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Kris\\Desktop\\Yaz\u0131l\u0131m\\krisis-code\\ASP.NET7.0MVC-KUTUPHANE-OTOMASYONU\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -59,7 +76,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Kris\\Desktop\\Yaz\u0131l\u0131m\\krisis-code\\ASP.NET7.0MVC-KUTUPHANE-OTOMASYONU\\Utility\\AppDbContext.cs",
               "RelativeDocumentMoniker": "Utility\\AppDbContext.cs",
@@ -67,12 +84,11 @@
               "RelativeToolTip": "Utility\\AppDbContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-11T11:57:35.775Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-11T11:57:35.775Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Kris\\Desktop\\Yaz\u0131l\u0131m\\krisis-code\\ASP.NET7.0MVC-KUTUPHANE-OTOMASYONU\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -84,7 +100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "BookGenres.cs",
               "DocumentMoniker": "C:\\Users\\Kris\\Desktop\\Yaz\u0131l\u0131m\\krisis-code\\ASP.NET7.0MVC-KUTUPHANE-OTOMASYONU\\Models\\BookGenres.cs",
               "RelativeDocumentMoniker": "Models\\BookGenres.cs",
