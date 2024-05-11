@@ -1,12 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Kris\\Desktop\\Yaz\u0131l\u0131m\\krisis-code\\ASP.NET7.0MVC-KUTUPHANE-OTOMASYONU\\SinemaOtomasyonu\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\Kris\\Desktop\\Yaz\u0131l\u0131m\\krisis-code\\ASP.NET7.0MVC-KUTUPHANE-OTOMASYONU\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F238BC65-3879-4462-A47F-860BDA010F7E}|SinemaOtomasyonu.csproj|c:\\users\\kris\\desktop\\yaz\u0131l\u0131m\\krisis-code\\asp.net7.0mvc-kutuphane-otomasyonu\\sinemaotomasyonu.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F238BC65-3879-4462-A47F-860BDA010F7E}|SinemaOtomasyonu.csproj|solutionrelative:sinemaotomasyonu.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SinemaOtomasyonu",
+              "DocumentMoniker": "C:\\Users\\Kris\\Desktop\\Yaz\u0131l\u0131m\\krisis-code\\ASP.NET7.0MVC-KUTUPHANE-OTOMASYONU\\SinemaOtomasyonu.csproj",
+              "RelativeDocumentMoniker": "SinemaOtomasyonu.csproj",
+              "ToolTip": "C:\\Users\\Kris\\Desktop\\Yaz\u0131l\u0131m\\krisis-code\\ASP.NET7.0MVC-KUTUPHANE-OTOMASYONU\\SinemaOtomasyonu.csproj",
+              "RelativeToolTip": "SinemaOtomasyonu.csproj",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAABUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-05-11T11:25:31.82Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
