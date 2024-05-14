@@ -44,7 +44,35 @@ namespace SinemaOtomasyonu.Controllers
         }
 
 
+		
 		[HttpGet]
+		public IActionResult Update(Guid? BookGenreId)
+		{
+			if (BookGenreId == null || BookGenreId == Guid.Empty)
+				return NotFound();
+
+			var bookGenresDb = _appDbContext.Genres.Find(BookGenreId);
+
+			if (bookGenresDb == null)
+				return NotFound();
+
+			return View(bookGenresDb);
+		}
+
+
+		[HttpPost]
+		public IActionResult Update(BookGenres bookGenres)
+		{
+			if (ModelState.IsValid)
+			{
+				_appDbContext.Genres.Update(bookGenres);
+				_appDbContext.SaveChanges();
+
+				return RedirectToAction("Index");
+			}
+			return View();
+
+		}
 		[HttpGet]
 		public IActionResult Update(Guid? BookGenreId)
 		{
