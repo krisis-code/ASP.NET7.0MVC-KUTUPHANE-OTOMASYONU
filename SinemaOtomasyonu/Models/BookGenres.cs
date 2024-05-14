@@ -8,7 +8,7 @@ namespace SinemaOtomasyonu.Models
         [Key]
         public Guid BookGenreId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Kitap türü boş bırakılamaz")]
         [DisplayName("Kitap Türü Adı")]
         [MaxLength(25)]
         public string BookGenreName { get; set; }
