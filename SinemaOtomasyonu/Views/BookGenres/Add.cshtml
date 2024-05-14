@@ -1,5 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<form method="post">
+
+	<div class="border p-3 mt-5">
+		<div class="row pb-3">
+			<h2 class="text-primary">Kitap Türü Ekle</h2>
+			</hr>
+		</div>
+
+		<div class="mb-3">
+			<label @* asp-for="*" *@ class="p-0"></label>
+			<input @* asp-for="*" *@ class="form-control" />
+			<span @* asp-validation-for="*"  *@class="text-danger"></span>
+		</div>
+
+		<button type="submit" class="btn btn-lg btn-primary" style="width:250px">Kitap Türü Ekle</button>
+
+		<a asp-controller="KitapTuru" asp-action="Index" class="btn btn-lg btn-primary" style="width:250px">
+			Kitap Türlerine Geri Dön
+		</a>
+
+	</div>
+
+</form>
