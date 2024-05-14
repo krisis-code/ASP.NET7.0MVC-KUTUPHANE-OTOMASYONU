@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace SinemaOtomasyonu.Models
 {
@@ -8,6 +9,7 @@ namespace SinemaOtomasyonu.Models
         public Guid BookGenreId { get; set; }
 
         [Required]
+        [DisplayName("Kitap Türü Adı")]
         public string BookGenreName { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace SinemaOtomasyonu.Controllers
     {
         private readonly AppDbContext _appDbContext;
 
-        public BookGenresController(AppDbContext context)
+        public BookGenresController(AppDbContext context )
         {
             _appDbContext = context;
         }
@@ -26,18 +26,17 @@ namespace SinemaOtomasyonu.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            
-
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult Add()
-        //{
-        //    List<BookGenres> objBookGenresList = _appDbContext.Genres.ToList();
+        [HttpPost]
+        public IActionResult Add(BookGenres bookGenres)
+        {
+            _appDbContext.Genres.Add(bookGenres);
+            _appDbContext.SaveChanges();
 
-        //    return View(objBookGenresList);
-        //}
+           return RedirectToAction("Index");
+        }
 
 
     }
