@@ -32,10 +32,15 @@ namespace SinemaOtomasyonu.Controllers
         [HttpPost]
         public IActionResult Add(BookGenres bookGenres)
         {
-            _appDbContext.Genres.Add(bookGenres);
-            _appDbContext.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _appDbContext.Genres.Add(bookGenres);
+                _appDbContext.SaveChanges();
 
-           return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            return View();
+            
         }
 
 
