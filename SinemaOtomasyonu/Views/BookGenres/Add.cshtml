@@ -1,4 +1,6 @@
-﻿<form method="post">
+﻿@model BookGenres
+
+<form method="post">
 
 	<div class="border p-3 mt-5">
 		<div class="row pb-3">
@@ -7,14 +9,14 @@
 		</div>
 
 		<div class="mb-3">
-			<label @* asp-for="*" *@ class="p-0"></label>
-			<input @* asp-for="*" *@ class="form-control" />
-			<span @* asp-validation-for="*"  *@class="text-danger"></span>
+			<label asp-for="BookGenreName" class="p-0"></label>
+			<input asp-for="BookGenreName" class="form-control" />
+			<span asp-validation-for="BookGenreName" class="text-danger"></span>
 		</div>
 
 		<button type="submit" class="btn btn-lg btn-primary" style="width:250px">Kitap Türü Ekle</button>
 
-		<a asp-controller="KitapTuru" asp-action="Index" class="btn btn-lg btn-primary" style="width:250px">
+		<a asp-controller="BookGenres" asp-action="Index" class="btn btn-lg btn-primary" style="width:250px">
 			Kitap Türlerine Geri Dön
 		</a>
 
