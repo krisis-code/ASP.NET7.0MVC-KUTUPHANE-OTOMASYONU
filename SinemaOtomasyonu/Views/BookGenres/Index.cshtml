@@ -35,12 +35,15 @@
 					
 					
 					<td>@{count++;}@count </td>
+					
 					<td>@genres.BookGenreName</td>
 					<td>
-						<a asp-controller="KitapTuru" asp-action="Guncelle" asp-route-id=".Id" type="button" class="btn btn-success" style="width:250px">Güncelle</a>
+						<a asp-controller="BookGenres" asp-action="Update" asp-route-BookGenreId="@genres.BookGenreId" class="btn btn-success" style="width:250px">Güncelle</a>
+
+
 					</td>
 					<td>
-						<a asp-controller="KitapTuru" asp-action="Sil" asp-route-id=".Id" type="button" class="btn btn-danger" style="width:250px">Sil</a>
+						<a asp-controller="BookGenres" asp-action="Delete" asp-route-id="@genres.BookGenreId" type="button" class="btn btn-danger" style="width:250px">Sil</a>
 					</td>
 				</tr>
 			}
