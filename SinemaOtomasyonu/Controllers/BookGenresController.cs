@@ -22,5 +22,23 @@ namespace SinemaOtomasyonu.Controllers
 
                 return View(objBookGenresList);
         }
+
+        [HttpGet]
+        public IActionResult Add()
+        {
+            List<BookGenres> objBookGenresList = _appDbContext.Genres.ToList();
+
+            return View(objBookGenresList);
+        }
+
+        [HttpPost]
+        public IActionResult Add()
+        {
+            List<BookGenres> objBookGenresList = _appDbContext.Genres.ToList();
+
+            return View(objBookGenresList);
+        }
+
+
     }
 }
