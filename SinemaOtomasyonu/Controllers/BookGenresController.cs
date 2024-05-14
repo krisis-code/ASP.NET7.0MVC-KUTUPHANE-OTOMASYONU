@@ -74,7 +74,7 @@ namespace SinemaOtomasyonu.Controllers
 
 		}
 		[HttpGet]
-		public IActionResult Update(Guid? BookGenreId)
+		public IActionResult Delete(Guid? BookGenreId)
 		{
 			if (BookGenreId == null || BookGenreId == Guid.Empty)
 				return NotFound();
@@ -89,11 +89,11 @@ namespace SinemaOtomasyonu.Controllers
 
 
 		[HttpPost]
-		public IActionResult Update(BookGenres bookGenres)
+		public IActionResult Delete(BookGenres bookGenres)
 		{
 			if (ModelState.IsValid)
 			{
-				_appDbContext.Genres.Update(bookGenres);
+				_appDbContext.Genres.Remove(bookGenres);
 				_appDbContext.SaveChanges();
 
 				return RedirectToAction("Index");
