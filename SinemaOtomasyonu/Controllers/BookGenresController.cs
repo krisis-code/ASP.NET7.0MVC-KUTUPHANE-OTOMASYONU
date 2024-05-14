@@ -26,18 +26,18 @@ namespace SinemaOtomasyonu.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            List<BookGenres> objBookGenresList = _appDbContext.Genres.ToList();
+            
 
-            return View(objBookGenresList);
+            return View();
         }
 
-        [HttpPost]
-        public IActionResult Add()
-        {
-            List<BookGenres> objBookGenresList = _appDbContext.Genres.ToList();
+        //[HttpPost]
+        //public IActionResult Add()
+        //{
+        //    List<BookGenres> objBookGenresList = _appDbContext.Genres.ToList();
 
-            return View(objBookGenresList);
-        }
+        //    return View(objBookGenresList);
+        //}
 
 
     }
