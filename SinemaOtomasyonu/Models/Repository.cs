@@ -7,9 +7,7 @@ namespace KitapKiralamaOtomasyonu.Models
 	public class Repository<T> : IRepository<T> where T : class
 	{
 		private readonly AppDbContext _appDbContext;
-
 		
-
 		internal DbSet<T> DbSet;
 
 		public Repository(AppDbContext appDbContext, DbSet<T> dbSet)
