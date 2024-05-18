@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using KitapKiralamaOtomasyonu.Models;
+using Microsoft.AspNetCore.Mvc;
 using SinemaOtomasyonu.Models;
 using SinemaOtomasyonu.Utilitiy;
 
@@ -7,20 +8,20 @@ namespace SinemaOtomasyonu.Controllers
 {
     public class BookGenresController : Controller
     {
-        private readonly AppDbContext _appDbContext;
+        private readonly IBookGenreRepository _bookGenreRepository;
 
-        public BookGenresController(AppDbContext context )
+        public BookGenresController(IBookGenreRepository context )
         {
-            _appDbContext = context;
+			_bookGenreRepository = context;
         }
 
         public AppDbContext Context { get; }
 
         public IActionResult Index()
         {
-            List<BookGenres> objBookGenresList = _appDbContext.Genres.ToList();
+            List<BookGenres> objBookGenresList = _bookGenreRepository.GetAll().ToList();
 
-                return View(objBookGenresList);
+            return View(objBookGenresList);
         }
 
         [HttpGet]
@@ -34,8 +35,8 @@ namespace SinemaOtomasyonu.Controllers
         {
             if (ModelState.IsValid)
             {
-                _appDbContext.Genres.Add(bookGenres);
-                _appDbContext.SaveChanges();
+				_bookGenreRepository.add(bookGenres);
+				_bookGenreRepository.save();
 				TempData["success"] = "Yeni kitap türü başarıyla eklendi";
                 return RedirectToAction("Index");
             }
@@ -51,7 +52,7 @@ namespace SinemaOtomasyonu.Controllers
 			if (BookGenreId == null || BookGenreId == Guid.Empty)
 				return NotFound();
 
-			var bookGenresDb = _appDbContext.Genres.Find(BookGenreId);
+			var bookGenresDb = _bookGenreRepository.Get(u=>u.BookGenreId== BookGenreId);
 
 			if (bookGenresDb == null)
 				return NotFound();
@@ -65,9 +66,9 @@ namespace SinemaOtomasyonu.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				_appDbContext.Genres.Update(bookGenres);
+				_bookGenreRepository.Update(bookGenres);
                 TempData["success"] = "Kitap türü başarıyla Güncellendi";
-                _appDbContext.SaveChanges();
+                _bookGenreRepository.save();
 
 				return RedirectToAction("Index");
 			}
@@ -80,7 +81,7 @@ namespace SinemaOtomasyonu.Controllers
 			if (BookGenreId == null || BookGenreId == Guid.Empty)
 				return NotFound();
 
-			var bookGenresDb = _appDbContext.Genres.Find(BookGenreId);
+			var bookGenresDb = _bookGenreRepository.Get(u=>u.BookGenreId== BookGenreId);
 
 			if (bookGenresDb == null)
 				return NotFound();
@@ -94,9 +95,9 @@ namespace SinemaOtomasyonu.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				_appDbContext.Genres.Remove(bookGenres);
+				_bookGenreRepository.remove(bookGenres);
                 TempData["success"] = "Kitap türü başarıyla silindi !";
-                _appDbContext.SaveChanges();
+                _bookGenreRepository.save();
 
 				return RedirectToAction("Index");
 			}
