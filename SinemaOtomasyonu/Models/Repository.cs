@@ -21,27 +21,30 @@ namespace KitapKiralamaOtomasyonu.Models
 
 		public void add(T entity)
 		{
-			throw new NotImplementedException();
+			DbSet.Add(entity);
 		}
 
 		public T Get(Expression<Func<T, bool>> filter)
 		{
-			throw new NotImplementedException();
+			IQueryable<T> find = DbSet;
+			find=find.Where(filter);
+			return find.FirstOrDefault();
 		}
 
 		public IEnumerable<T> GetAll()
 		{
-			throw new NotImplementedException();
+			IQueryable<T> find = DbSet;
+			return find.ToList();
 		}
 
 		public void remove(T entity)
 		{
-			throw new NotImplementedException();
+			DbSet.Remove(entity);
 		}
 
 		public void removeBetweem(IEnumerable<T> entities)
 		{
-			throw new NotImplementedException();
+			DbSet.RemoveRange(entities);
 		}
 	}
 }
