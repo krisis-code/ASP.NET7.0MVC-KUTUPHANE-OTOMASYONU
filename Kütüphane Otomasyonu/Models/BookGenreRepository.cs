@@ -16,12 +16,12 @@ namespace KitapKiralamaOtomasyonu.Models
 
 		public void save()
 		{
-			throw new NotImplementedException();
+			_appDbContext.SaveChanges();
 		}
 
 		public void Update(BookGenres bookGenres)
 		{
-			throw new NotImplementedException();
+			_appDbContext.Update(bookGenres);
 		}
 	}
 }
