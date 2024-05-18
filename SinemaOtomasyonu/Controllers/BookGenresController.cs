@@ -36,7 +36,7 @@ namespace SinemaOtomasyonu.Controllers
             {
                 _appDbContext.Genres.Add(bookGenres);
                 _appDbContext.SaveChanges();
-
+				TempData["success"] = "Yeni kitap türü başarıyla eklendi";
                 return RedirectToAction("Index");
             }
             return View();
@@ -66,7 +66,8 @@ namespace SinemaOtomasyonu.Controllers
 			if (ModelState.IsValid)
 			{
 				_appDbContext.Genres.Update(bookGenres);
-				_appDbContext.SaveChanges();
+                TempData["success"] = "Kitap türü başarıyla Güncellendi";
+                _appDbContext.SaveChanges();
 
 				return RedirectToAction("Index");
 			}
@@ -94,7 +95,8 @@ namespace SinemaOtomasyonu.Controllers
 			if (ModelState.IsValid)
 			{
 				_appDbContext.Genres.Remove(bookGenres);
-				_appDbContext.SaveChanges();
+                TempData["success"] = "Kitap türü başarıyla silindi !";
+                _appDbContext.SaveChanges();
 
 				return RedirectToAction("Index");
 			}
