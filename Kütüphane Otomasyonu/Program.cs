@@ -1,3 +1,4 @@
+using KitapKiralamaOtomasyonu.Models;
 using Microsoft.EntityFrameworkCore;
 using SinemaOtomasyonu.Utilitiy;
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IBookGenreRepository, BookGenreRepository>();
 
 var app = builder.Build();
 
