@@ -57,12 +57,12 @@
 					<td>@book.Writer</td>
 					<td>@book.Price</td>
 					<td>
-						<a asp-controller="Book" asp-action="Update" asp-route-BookGenreId="@book.BookId" class="btn btn-success" style="width:250px">Güncelle</a>
+						<a asp-controller="Book" asp-action="Update" asp-route-BookId="@book.BookId" class="btn btn-success" style="width:250px">Güncelle</a>
 
 
 					</td>
 					<td>
-						<a asp-controller="Book" asp-action="Delete" asp-route-BookGenreId="@book.BookId" type="button" class="btn btn-danger" style="width:250px">Sil</a>
+						<a asp-controller="Book" asp-action="Delete" asp-route-BookId="@book.BookId" type="button" class="btn btn-danger" style="width:250px">Sil</a>
 					</td>
 				</tr>
 			}
