@@ -9,8 +9,14 @@ namespace KitapKiralamaOtomasyonu.Models
 		private readonly AppDbContext _appDbContext;
 		
 		internal DbSet<T> DbSet;
+        private AppDbContext appDbContext;
 
-		public Repository(AppDbContext appDbContext, DbSet<T> dbSet)
+        public Repository(AppDbContext appDbContext)
+        {
+            this.appDbContext = appDbContext;
+        }
+
+        public Repository(AppDbContext appDbContext, DbSet<T> dbSet)
 		{
 			_appDbContext = appDbContext;
 			DbSet = dbSet;

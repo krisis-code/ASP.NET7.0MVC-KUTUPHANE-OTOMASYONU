@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using KitapKiralamaOtomasyonu.Models;
+using Microsoft.EntityFrameworkCore;
 using SinemaOtomasyonu.Models;
 
 namespace SinemaOtomasyonu.Utilitiy
@@ -8,5 +9,7 @@ namespace SinemaOtomasyonu.Utilitiy
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<BookGenres> Genres { get; set; }
+
+        public DbSet<Book> Books { get; set; }
     }
 }
