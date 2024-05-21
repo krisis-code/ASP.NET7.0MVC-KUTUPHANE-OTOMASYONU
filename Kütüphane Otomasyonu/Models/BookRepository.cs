@@ -5,11 +5,11 @@ using System.Linq.Expressions;
 
 namespace KitapKiralamaOtomasyonu.Models
 {
-    public class BookGenreRepository : Repository<BookGenres>, IBookGenreRepository
+    public class BookRepository : Repository<Book>, IBookRepository
     {
         private readonly AppDbContext _appDbContext;
 
-        public BookGenreRepository(AppDbContext appDbContext) : base(appDbContext)
+        public BookRepository(AppDbContext appDbContext) : base(appDbContext)
         {
             _appDbContext = appDbContext;
         }
@@ -20,9 +20,10 @@ namespace KitapKiralamaOtomasyonu.Models
             _appDbContext.SaveChanges();
         }
 
-        public void Update(BookGenres bookGenres)
+        public void Update(Book book)
         {
-            _appDbContext.Update(bookGenres);
+                _appDbContext.Update(book);
+            
         }
     }
 

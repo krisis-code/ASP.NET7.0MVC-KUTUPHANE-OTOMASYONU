@@ -2,9 +2,9 @@
 
 namespace KitapKiralamaOtomasyonu.Models
 {
-	public interface IBookGenreRepository : IRepository<BookGenres>
+	public interface IBookRepository : IRepository<Book>
 	{
-		void Update(BookGenres bookGenres);
+		void Update(Book book);
 
 		void save();
 	}
