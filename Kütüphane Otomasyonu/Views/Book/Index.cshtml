@@ -1,5 +1,81 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@using KitapKiralamaOtomasyonu.Models
+@model List<Book>
+@if (TempData["success"] != null)
+{
+	<h2>@TempData["success"]</h2>
 }
+
+<div class="container">
+
+	<div class="row pt-3 pb-4"
+		<div>
+			<h1>Kitaplar</h1>
+		</div>
+	</div>
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>
+					Id
+				</th>
+				<th>
+					Kitaplar
+				</th>
+				<th>
+					Özet
+				</th>
+				<th>
+					Yazar
+				</th>
+				<th>
+					Fiyat
+				</th>
+				<th>
+				</th>
+				<th>
+				</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			@{
+				int count = 0;
+			}
+
+			@foreach (var book in Model)
+			{
+				<tr>
+
+
+					<td>@{
+							count++;
+						}@count </td>
+
+					<td>@book.BookName</td>
+					<td>@book.Description<td>
+					<td>@book.Writer</td>
+					<td>@book.Price</td>
+					<td>
+						<a asp-controller="Book" asp-action="Update" asp-route-BookGenreId="@book.BookId" class="btn btn-success" style="width:250px">Güncelle</a>
+
+
+					</td>
+					<td>
+						<a asp-controller="Book" asp-action="Delete" asp-route-BookGenreId="@book.BookId" type="button" class="btn btn-danger" style="width:250px">Sil</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+	<div class="row pt-3 pb-2">
+		<div>
+			<a asp-controller="Book" asp-action="Add" class="btn btn-lg btn-primary" type="button">
+				Yeni Kitap  Ekle
+			</a>
+		</div>
+	</div>
+
+
+</div>

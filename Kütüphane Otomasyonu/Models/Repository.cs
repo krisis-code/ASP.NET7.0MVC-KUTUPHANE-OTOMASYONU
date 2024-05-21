@@ -6,49 +6,43 @@ namespace KitapKiralamaOtomasyonu.Models
 {
 	public class Repository<T> : IRepository<T> where T : class
 	{
-		private readonly AppDbContext _appDbContext;
-		
-		internal DbSet<T> DbSet;
-        private AppDbContext appDbContext;
+		protected readonly AppDbContext _context;
+		protected readonly DbSet<T> _dbSet;
 
-        public Repository(AppDbContext appDbContext)
-        {
-            this.appDbContext = appDbContext;
-        }
-
-        public Repository(AppDbContext appDbContext, DbSet<T> dbSet)
+		public Repository(AppDbContext context)
 		{
-			_appDbContext = appDbContext;
-			DbSet = dbSet;
+			_context = context;
+			_dbSet = context.Set<T>();
 		}
+
 
 
 		public void add(T entity)
 		{
-			DbSet.Add(entity);
+			_dbSet.Add(entity);
 		}
 
 		public T Get(Expression<Func<T, bool>> filter)
 		{
-			IQueryable<T> find = DbSet;
+			IQueryable<T> find = _dbSet;
 			find=find.Where(filter);
 			return find.FirstOrDefault();
 		}
 
 		public IEnumerable<T> GetAll()
 		{
-			IQueryable<T> find = DbSet;
+			IQueryable<T> find = _dbSet;
 			return find.ToList();
 		}
 
 		public void remove(T entity)
 		{
-			DbSet.Remove(entity);
+			_dbSet.Remove(entity);
 		}
 
 		public void removeBetweem(IEnumerable<T> entities)
 		{
-			DbSet.RemoveRange(entities);
+			_dbSet.RemoveRange(entities);
 		}
 	}
 }
