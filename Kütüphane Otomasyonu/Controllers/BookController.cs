@@ -91,6 +91,15 @@ namespace SinemaOtomasyonu.Controllers
 		[HttpGet]
 		public IActionResult Update(Guid? BookId)
 		{
+			IEnumerable<SelectListItem> BookGenreList = _bookGenreRepository.GetAll()
+					.Select(k => new SelectListItem
+					{
+						Text = k.BookGenreName,
+						Value = k.BookGenreId.ToString()
+					}).ToList();
+			ViewBag.BookGenreList = BookGenreList;
+
+			
 			if (BookId == null || BookId == Guid.Empty)
 				return NotFound();
 
@@ -108,7 +117,22 @@ namespace SinemaOtomasyonu.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-                _bookRepository.Update(book);
+				string wwwRootPath = _webHostEnvironment.WebRootPath;
+				string kitapPath = Path.Combine(wwwRootPath, @"img");
+
+				if (file != null)
+				{
+					using (var fileStream = new FileStream(Path.Combine(kitapPath, file.FileName), FileMode.Create))
+					{
+						file.CopyTo(fileStream);
+					}
+					book.ImageUrl = @"\img\" + file.FileName;
+				}
+				else
+				{
+					book.ImageUrl = book.ImageUrl;
+				}
+				_bookRepository.Update(book);
                 TempData["success"] = "Kitap türü başarıyla Güncellendi";
                 _bookRepository.save();
 

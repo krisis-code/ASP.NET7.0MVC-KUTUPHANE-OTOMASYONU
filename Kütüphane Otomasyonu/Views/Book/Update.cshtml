@@ -46,6 +46,13 @@
 
 
 		</div>
+		<div class="col-2">
+			@if (Model != null)
+			{
+				<img src="@Model.ImageUrl" width="100%"
+					 style="border-radius:7px; border:1px solid #bbb9b9" />
+			}
+		</div>
 
 
 		<button type="submit" class="btn btn-lg btn-primary" style="width:250px">Kitap  Ekle</button>
