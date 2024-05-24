@@ -1,5 +1,6 @@
 ﻿using KitapKiralamaOtomasyonu.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SinemaOtomasyonu.Models;
 using SinemaOtomasyonu.Utilitiy;
 
@@ -9,17 +10,24 @@ namespace SinemaOtomasyonu.Controllers
     public class BookController : Controller
     {
         private readonly IBookRepository _bookRepository;
+		private readonly IBookGenreRepository _bookGenreRepository;
 
-        public BookController(IBookRepository context )
+        public BookController(IBookRepository context,IBookGenreRepository bookGenreRepository)
         {
             _bookRepository = context;
-        }
+			_bookGenreRepository = bookGenreRepository;
+		}
 
         public AppDbContext Context { get; }
 
         public IActionResult Index()
         {
             List<Book> objBookGenresList = _bookRepository.GetAll().ToList();
+			IEnumerable<SelectListItem> BookGenreList = _bookGenreRepository.GetAll()
+				.Select(k => new SelectListItem {
+				Text = k.BookGenreName,
+				Value = k.BookGenreId.ToString()
+					  });
 
             return View(objBookGenresList);
         }
