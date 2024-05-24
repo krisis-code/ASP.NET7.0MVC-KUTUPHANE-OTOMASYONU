@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SinemaOtomasyonu.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KitapKiralamaOtomasyonu.Models
 {
@@ -14,5 +16,9 @@ namespace KitapKiralamaOtomasyonu.Models
         public string Writer { get; set; }
         [Required]
         public double Price { get; set; }
-    }
+
+		public Guid BookGenreId { get; set; }
+        [ForeignKey("BookGenreId")]
+        public BookGenres BookGenres { get; set; }
+	}
 }
