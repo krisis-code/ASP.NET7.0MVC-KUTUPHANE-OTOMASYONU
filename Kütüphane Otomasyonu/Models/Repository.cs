@@ -13,6 +13,7 @@ namespace KitapKiralamaOtomasyonu.Models
 		{
 			_context = context;
 			_dbSet = context.Set<T>();
+			_context.Books.Include(k => k.BookGenres).Include(k => k.BookGenreId);
 		}
 
 
@@ -22,16 +23,30 @@ namespace KitapKiralamaOtomasyonu.Models
 			_dbSet.Add(entity);
 		}
 
-		public T Get(Expression<Func<T, bool>> filter)
+		public T Get(Expression<Func<T, bool>> filter, string? includeProps = null)
 		{
 			IQueryable<T> find = _dbSet;
 			find=find.Where(filter);
+			if (!string.IsNullOrEmpty(includeProps))
+			{
+				foreach (var item in includeProps.Split(new char[] { ','},StringSplitOptions.RemoveEmptyEntries))
+				{
+					find = find.Include(item);
+				}
+			}
 			return find.FirstOrDefault();
 		}
 
-		public IEnumerable<T> GetAll()
+		public IEnumerable<T> GetAll(string? includeProps = null)
 		{
 			IQueryable<T> find = _dbSet;
+			if (!string.IsNullOrEmpty(includeProps))
+			{
+				foreach (var item in includeProps.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+				{
+					find = find.Include(item);
+				}
+			}
 			return find.ToList();
 		}
 

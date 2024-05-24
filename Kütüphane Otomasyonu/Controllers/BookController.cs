@@ -78,16 +78,6 @@ namespace SinemaOtomasyonu.Controllers
 			TempData["success"] = "Yeni kitap başarıyla eklendi";
 			return RedirectToAction("Index");
 		}
-
-
-
-
-
-
-
-
-
-
 		[HttpGet]
 		public IActionResult Update(Guid? BookId)
 		{
