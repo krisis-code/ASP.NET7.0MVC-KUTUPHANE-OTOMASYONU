@@ -23,7 +23,7 @@
 					Kitap Türü
 				</th>
 				<th>
-					Kitaplar
+					Kitap
 				</th>
 				<th>
 					Özet
@@ -34,10 +34,8 @@
 				<th>
 					Fiyat
 				</th>
-				<th>
-				</th>
-				<th>
-				</th>
+			
+				
 			</tr>
 		</thead>
 
@@ -54,7 +52,7 @@
 					<td>@{
 							count++;
 						}@count </td>
-					<td>@book.BookGenres </td>
+					<td>@book.BookGenres.BookGenreName </td>
 					<td>@book.BookName</td>
 					<td>@book.Description<td>
 					<td>@book.Writer</td>

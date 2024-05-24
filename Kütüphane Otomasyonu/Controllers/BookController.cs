@@ -24,7 +24,7 @@ namespace SinemaOtomasyonu.Controllers
 
         public IActionResult Index()
         {
-            List<Book> objBookGenresList = _bookRepository.GetAll().ToList();
+            List<Book> objBookGenresList = _bookRepository.GetAll(includeProps:"BookGenres").ToList();
 			
 
             return View(objBookGenresList);
