@@ -20,5 +20,7 @@ namespace KitapKiralamaOtomasyonu.Models
 		public Guid BookGenreId { get; set; }
         [ForeignKey("BookGenreId")]
         public BookGenres BookGenres { get; set; }
+
+        public string ImageUrl { get; set; }
 	}
 }
