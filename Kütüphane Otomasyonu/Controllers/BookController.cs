@@ -11,11 +11,13 @@ namespace SinemaOtomasyonu.Controllers
     {
         private readonly IBookRepository _bookRepository;
 		private readonly IBookGenreRepository _bookGenreRepository;
+		public readonly IWebHostEnvironment _webHostEnvironment;
 
-        public BookController(IBookRepository context,IBookGenreRepository bookGenreRepository)
+		public BookController(IBookRepository context,IBookGenreRepository bookGenreRepository, IWebHostEnvironment _webHostEnvironment)
         {
             _bookRepository = context;
 			_bookGenreRepository = bookGenreRepository;
+			this._webHostEnvironment = _webHostEnvironment;
 		}
 
         public AppDbContext Context { get; }
@@ -23,37 +25,69 @@ namespace SinemaOtomasyonu.Controllers
         public IActionResult Index()
         {
             List<Book> objBookGenresList = _bookRepository.GetAll().ToList();
-			IEnumerable<SelectListItem> BookGenreList = _bookGenreRepository.GetAll()
-				.Select(k => new SelectListItem {
-				Text = k.BookGenreName,
-				Value = k.BookGenreId.ToString()
-					  });
+			
 
             return View(objBookGenresList);
         }
 
-        [HttpGet]
-        public IActionResult Add()
-        {
-            return View();
-        }
+		[HttpGet]
+		public IActionResult Add()
+		{
+			
+			IEnumerable<SelectListItem> BookGenreList = _bookGenreRepository.GetAll()
+				.Select(k => new SelectListItem
+				{
+					Text = k.BookGenreName,
+					Value = k.BookGenreId.ToString()
+				});
 
-        [HttpPost]
-        public IActionResult Add(Book book)
-        {
-            if (ModelState.IsValid)
-            {
-                _bookRepository.add(book);
-                _bookRepository.save();
-				TempData["success"] = "Yeni kitap  başarıyla eklendi";
-                return RedirectToAction("Index");
-            }
-            return View();
-            
-        }
+			ViewBag.BookGenreList = BookGenreList;
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult Add(Book book, IFormFile? file)
+		{
+			if (!ModelState.IsValid)
+			{
+				IEnumerable<SelectListItem> BookGenreList = _bookGenreRepository.GetAll()
+					.Select(k => new SelectListItem
+					{
+						Text = k.BookGenreName,
+						Value = k.BookGenreId.ToString()
+					}).ToList();
+				ViewBag.BookGenreList = BookGenreList;
+				return View(book); // Form verilerini koruma
+			}
+			string wwwRootPath = _webHostEnvironment.WebRootPath;
+			string kitapPath = Path.Combine(wwwRootPath, @"img");
+
+			if (file != null)
+			{
+				using (var fileStream = new FileStream(Path.Combine(kitapPath, file.FileName), FileMode.Create))
+				{
+					file.CopyTo(fileStream);
+				}
+				book.ImageUrl = @"\img\" + file.FileName;
+			}
 
 
-		
+
+			_bookRepository.add(book);
+			_bookRepository.save();
+			TempData["success"] = "Yeni kitap başarıyla eklendi";
+			return RedirectToAction("Index");
+		}
+
+
+
+
+
+
+
+
+
+
 		[HttpGet]
 		public IActionResult Update(Guid? BookId)
 		{
@@ -70,7 +104,7 @@ namespace SinemaOtomasyonu.Controllers
 
 
 		[HttpPost]
-		public IActionResult Update(Book book)
+		public IActionResult Update(Book book,IFormFile? file)
 		{
 			if (ModelState.IsValid)
 			{

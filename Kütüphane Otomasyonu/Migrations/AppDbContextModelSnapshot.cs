@@ -8,7 +8,7 @@ using SinemaOtomasyonu.Utilitiy;
 
 #nullable disable
 
-namespace SinemaOtomasyonu.Migrations
+namespace KitapKiralamaOtomasyonu.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot

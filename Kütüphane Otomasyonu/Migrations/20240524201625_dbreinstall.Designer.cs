@@ -9,11 +9,11 @@ using SinemaOtomasyonu.Utilitiy;
 
 #nullable disable
 
-namespace SinemaOtomasyonu.Migrations
+namespace KitapKiralamaOtomasyonu.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240524174321_ForeignKeyAdd")]
-    partial class ForeignKeyAdd
+    [Migration("20240524201625_dbreinstall")]
+    partial class dbreinstall
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,6 +39,10 @@ namespace SinemaOtomasyonu.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
