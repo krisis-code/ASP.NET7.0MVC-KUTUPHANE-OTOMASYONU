@@ -1,0 +1,66 @@
+﻿@using KitapKiralamaOtomasyonu.Models
+@model Book
+
+<form method="post" enctype="multipart/form-data">
+	<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+	<input asp-for="ImageUrl" hidden />
+
+	<div class="border p-3 mt-5">
+		<div class="row pb-3">
+			<h2 class="text-primary">Kitap Türü Ekle</h2>
+			</hr>
+		</div>
+
+		<div class="mb-3">
+			<label asp-for="BookName" class="p-0"></label>
+			<input asp-for="BookName" class="form-control" />
+			<span asp-validation-for="BookName" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="BookGenreId" class="p-0"></label>
+			<select asp-for="BookGenreId" asp-items="ViewBag.BookGenreList" class="form-select">
+			</select>
+		</div>
+
+
+
+		<div class="mb-3">
+			<label asp-for="Description" class="p-0"></label>
+			<input asp-for="Description" class="form-control" />
+			<span asp-validation-for="Description" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Writer" class="p-0"></label>
+			<input asp-for="Writer" class="form-control" />
+			<span asp-validation-for="Writer" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Price" class="p-0"></label>
+			<input asp-for="Price" class="form-control" />
+			<span asp-validation-for="Price" class="text-danger"></span>
+		</div>
+
+		<div class="form-group">
+			<label asp-for="ImageUrl" class="control-label"></label>
+			<input asp-for="ImageUrl" name="file" class="form-control" type="file" />
+
+
+		</div>
+		<div class="col-2">
+			@if (Model != null)
+			{
+				<img src="@Model.ImageUrl" width="100%"
+					 style="border-radius:7px; border:1px solid #bbb9b9" />
+			}
+		</div>
+
+
+		<button type="submit" class="btn btn-lg btn-primary" style="width:250px">Kitap  Ekle</button>
+
+		<a asp-controller="Book" asp-action="Index" class="btn btn-lg btn-primary" style="width:250px">
+			Kitap sayfasına Geri Dön
+		</a>
+
+	</div>
+
+</form>

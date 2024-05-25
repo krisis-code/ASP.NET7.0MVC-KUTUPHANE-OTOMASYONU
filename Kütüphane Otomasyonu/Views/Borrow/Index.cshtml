@@ -1,0 +1,64 @@
+﻿@using KitapKiralamaOtomasyonu.Models
+@model List<Borrow>
+@if (TempData["success"] != null)
+{
+	<h2>@TempData["success"]</h2>
+}
+
+<div class="container">
+	<div class="row pt-3 pb-4">
+		<div>
+			<h1>Kitaplar</h1>
+		</div>
+	</div>
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Kitap Türü</th>
+				<th>Kitap</th>
+				
+			</tr>
+		</thead>
+
+		<tbody>
+			@{
+				int count = 0;
+			}
+
+			@foreach (var borrow in Model)
+			{
+				<tr>
+					<td>@(++count)</td>
+					<td>@borrow.UserId</td>
+					<td>@borrow.book.BookGenres.BookGenreName</td>
+					<td>@borrow.book.BookName</td>
+					<td>
+						<div class="col-2">
+							@if (borrow != null)
+							{
+								<img src="@borrow.book.ImageUrl" width="200px"
+									 style="border-radius:7px; border:1px solid #bbb9b9" />
+							}
+						</div>
+					</td>
+					<td>
+						<a asp-controller="Book" asp-action="Update" asp-route-BookId="@borrow.BookId" class="btn btn-success" style="width:250px">Güncelle</a>
+					</td>
+					<td>
+						<a asp-controller="Book" asp-action="Delete" asp-route-BookId="@borrow.BookId" type="button" class="btn btn-danger" style="width:250px">Sil</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+	<div class="row pt-3 pb-2">
+		<div>
+			<a asp-controller="Book" asp-action="Add" class="btn btn-lg btn-primary" type="button">
+				Yeni Kitap Ekle
+			</a>
+		</div>
+	</div>
+</div>
