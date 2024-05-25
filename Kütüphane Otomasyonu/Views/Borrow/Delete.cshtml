@@ -1,5 +1,5 @@
 ﻿@using KitapKiralamaOtomasyonu.Models
-@model Book
+@model Borrow
 
 <form method="post">
 
@@ -10,28 +10,18 @@
 		</div>
 
 		<div class="mb-3">
-			<label asp-for="BookName" class="p-0"></label>
-			<input asp-for="BookName" class="form-control" />
-			<span asp-validation-for="BookName" class="text-danger"></span>
+			<label asp-for="UserId" class="p-0"></label>
+			<input asp-for="UserId" class="form-control" />
+			<span asp-validation-for="UserId" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
-			<label asp-for="Description" class="p-0"></label>
-			<input asp-for="Description" class="form-control" />
-			<span asp-validation-for="Description" class="text-danger"></span>
-		</div>
-		<div class="mb-3">
-			<label asp-for="Writer" class="p-0"></label>
-			<input asp-for="Writer" class="form-control" />
-			<span asp-validation-for="Writer" class="text-danger"></span>
-		</div>
-		<div class="mb-3">
-			<label asp-for="Price" class="p-0"></label>
-			<input asp-for="Price" class="form-control" />
-			<span asp-validation-for="Price" class="text-danger"></span>
+			<label asp-for="BookId" class="p-0"></label>
+			<select asp-for="BookId" asp-items="ViewBag.BookList" class="form-select">
+			</select>
 		</div>
 		<button type="submit" class="btn btn-lg btn-primary" style="width:250px">Kitap  Sil</button>
 
-		<a asp-controller="Book" asp-action="Index" class="btn btn-lg btn-primary" style="width:250px">
+		<a asp-controller="Borrow" asp-action="Index" class="btn btn-lg btn-primary" style="width:250px">
 			Kitap sayfasına Geri Dön
 		</a>
 

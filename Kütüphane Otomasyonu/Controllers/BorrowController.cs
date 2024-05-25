@@ -66,46 +66,49 @@ namespace SinemaOtomasyonu.Controllers
 			TempData["success"] = "Yeni kitap başarıyla eklendi";
 			return RedirectToAction("Index");
 		}
-		[HttpGet]
-		public IActionResult Update(Guid? BarrowId)
-		{
-			IEnumerable<SelectListItem> BookList = _bookRepository.GetAll()
-					.Select(k => new SelectListItem
-					{
-						Text = k.BookName,
-						Value = k.BookId.ToString()
-					}).ToList();
-			ViewBag.BookList = BookList;
+        [HttpGet]
+        public IActionResult Update(Guid? BorrowId)
+        {
+            if (BorrowId == null || BorrowId == Guid.Empty)
+                return NotFound();
 
-			
-			if (BarrowId == null || BarrowId == Guid.Empty)
-				return NotFound();
+            var borrowDb = _borrowRepository.Get(u => u.BorrowId == BorrowId, includeProps: "book");
 
-			var BorrowDb = _borrowRepository.Get(u=>u.BorrowId == BarrowId);
+            if (borrowDb == null)
+                return NotFound();
 
-			if (BorrowDb == null)
-				return NotFound();
+            ViewBag.BookList = _bookRepository.GetAll()
+                .Select(k => new SelectListItem
+                {
+                    Text = k.BookName,
+                    Value = k.BookId.ToString()
+                }).ToList();
 
-			return View(BorrowDb);
-		}
+            return View(borrowDb);
+        }
 
-
-		[HttpPost]
-		public IActionResult Update(Borrow borrow)
-		{
-			if (ModelState.IsValid)
-			{
-				
-				_borrowRepository.Update(borrow);
-                TempData["success"] = "Kitap türü başarıyla Güncellendi";
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(Borrow borrow)
+        {
+            if (ModelState.IsValid)
+            {
+                _borrowRepository.Update(borrow);
                 _borrowRepository.save();
+                TempData["success"] = "Kitap türü başarıyla güncellendi.";
+                return RedirectToAction("Index");
+            }
 
-				return RedirectToAction("Index");
-			}
-			return View();
+            ViewBag.BookList = _bookRepository.GetAll()
+                .Select(k => new SelectListItem
+                {
+                    Text = k.BookName,
+                    Value = k.BookId.ToString()
+                }).ToList();
 
-		}
-		[HttpGet]
+            return View(borrow);
+        }
+        [HttpGet]
 		public IActionResult Delete(Guid? BarrowId)
 		{
 			if (BarrowId == null || BarrowId == Guid.Empty)

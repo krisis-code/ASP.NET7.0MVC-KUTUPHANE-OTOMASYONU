@@ -2,63 +2,60 @@
 @model List<Borrow>
 @if (TempData["success"] != null)
 {
-	<h2>@TempData["success"]</h2>
+    <h2>@TempData["success"]</h2>
 }
 
 <div class="container">
-	<div class="row pt-3 pb-4">
-		<div>
-			<h1>Kitaplar</h1>
-		</div>
-	</div>
+    <div class="row pt-3 pb-4">
+        <div>
+            <h1>Kitaplar</h1>
+        </div>
+    </div>
 
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Kitap</th>
-				<th>Kullanıcı</th>
-				
-			</tr>
-		</thead>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Kitap</th>
+                <th>Kullanıcı</th>
+                <th>Resim</th>
+                <th>Güncelle</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
 
-		<tbody>
-			@{
-				int count = 0;
-			}
+        <tbody>
+            @foreach (var borrow in Model)
+            {
+                <tr>
+                    <td>@(Model.IndexOf(borrow) + 1)</td>
+                    <td>@borrow.book.BookName</td>
+                    <td>@borrow.UserId</td>
+                    <td>
+                        <div class="col-2">
+                            @if (!string.IsNullOrEmpty(borrow.book.ImageUrl))
+                            {
+                                <img src="@borrow.book.ImageUrl" width="200px" style="border-radius:7px; border:1px solid #bbb9b9" />
+                            }
+                        </div>
+                    </td>
+                    <td>
+                        <a name="BorrowId" value="@borrow.BorrowId" asp-controller="Borrow" asp-action="Update" asp-route-BorrowId="@borrow.BorrowId" class="btn btn-success" style="width:250px">Güncelle</a>
+                    </td>
+                    <td>
+                        <form asp-controller="Borrow" asp-action="Delete" method="post" style="display:inline;">
+                            <input type="hidden" name="BorrowId" value="@borrow.BorrowId" />
+                            <button type="submit" class="btn btn-danger" style="width:250px">Sil</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-			@foreach (var borrow in Model)
-			{
-				<tr>
-					<td>@(++count)</td>
-					
-					<td>@borrow.book.BookName</td>
-					<td>@borrow.UserId</td>
-					<td>
-						<div class="col-2">
-							@if (borrow != null)
-							{
-								<img src="@borrow.book.ImageUrl" width="200px"
-									 style="border-radius:7px; border:1px solid #bbb9b9" />
-							}
-						</div>
-					</td>
-					<td>
-						<a asp-controller="Book" asp-action="Update" asp-route-BookId="@borrow.BookId" class="btn btn-success" style="width:250px">Güncelle</a>
-					</td>
-					<td>
-						<a asp-controller="Book" asp-action="Delete" asp-route-BookId="@borrow.BookId" type="button" class="btn btn-danger" style="width:250px">Sil</a>
-					</td>
-				</tr>
-			}
-		</tbody>
-	</table>
-
-	<div class="row pt-3 pb-2">
-		<div>
-			<a asp-controller="Book" asp-action="Add" class="btn btn-lg btn-primary" type="button">
-				Yeni Kitap Ekle
-			</a>
-		</div>
-	</div>
+    <div class="row pt-3 pb-2">
+        <div>
+            <a asp-controller="Borrow" asp-action="Add" class="btn btn-lg btn-primary" type="button">Ödünç kitap ver</a>
+        </div>
+    </div>
 </div>
