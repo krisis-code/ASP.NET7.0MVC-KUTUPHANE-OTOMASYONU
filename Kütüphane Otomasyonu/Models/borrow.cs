@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KitapKiralamaOtomasyonu.Models
 {
-	public class borrow
+	public class Borrow
 	{
 		[Key]
 		public Guid BorrowId { get; set; }

@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace KitapKiralamaOtomasyonu.Models
 {
-    public class BorrowRepository : Repository<Borrow>
+    public class BorrowRepository : Repository<Borrow> , IBorrowRepository
     {
         private readonly AppDbContext _appDbContext;
 
