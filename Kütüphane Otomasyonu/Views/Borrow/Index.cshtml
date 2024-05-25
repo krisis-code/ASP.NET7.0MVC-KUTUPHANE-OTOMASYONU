@@ -16,8 +16,8 @@
 		<thead>
 			<tr>
 				<th>Id</th>
-				<th>Kitap Türü</th>
 				<th>Kitap</th>
+				<th>Kullanıcı</th>
 				
 			</tr>
 		</thead>
@@ -31,9 +31,9 @@
 			{
 				<tr>
 					<td>@(++count)</td>
-					<td>@borrow.UserId</td>
-					<td>@borrow.book.BookGenres.BookGenreName</td>
+					
 					<td>@borrow.book.BookName</td>
+					<td>@borrow.UserId</td>
 					<td>
 						<div class="col-2">
 							@if (borrow != null)

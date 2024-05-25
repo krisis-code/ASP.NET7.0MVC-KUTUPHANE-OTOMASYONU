@@ -24,7 +24,7 @@ namespace SinemaOtomasyonu.Controllers
 
         public IActionResult Index()
         {
-            List<Borrow> objBarrowList = _borrowRepository.GetAll(includeProps:"Book").ToList();
+            List<Borrow> objBarrowList = _borrowRepository.GetAll(includeProps:"book").ToList();
 			
 
             return View(objBarrowList);
@@ -33,6 +33,7 @@ namespace SinemaOtomasyonu.Controllers
 		[HttpGet]
 		public IActionResult Add()
 		{
+
 			
 			IEnumerable<SelectListItem> BookList = _bookRepository.GetAll()
 				.Select(k => new SelectListItem
