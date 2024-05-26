@@ -18,5 +18,9 @@ namespace KitapKiralamaOtomasyonu.Models
 
 		[ValidateNever]
 		public Book book { get; set; }
+
+		
+
+
 	}
 }

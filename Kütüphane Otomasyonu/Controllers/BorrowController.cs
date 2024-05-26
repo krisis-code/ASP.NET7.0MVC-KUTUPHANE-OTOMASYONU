@@ -1,8 +1,10 @@
 ﻿using KitapKiralamaOtomasyonu.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SinemaOtomasyonu.Models;
 using SinemaOtomasyonu.Utilitiy;
+
 
 
 namespace SinemaOtomasyonu.Controllers
@@ -12,13 +14,15 @@ namespace SinemaOtomasyonu.Controllers
         private readonly IBookRepository _bookRepository;
 		private readonly IBorrowRepository _borrowRepository;
 		public readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly UserManager<IdentityUser> _userManager;
 
-		public BorrowController(IBorrowRepository context, IBookRepository _bookRepository, IWebHostEnvironment _webHostEnvironment)
+        public BorrowController(IBorrowRepository context,IBookRepository _bookRepository, IWebHostEnvironment _webHostEnvironment,UserManager<IdentityUser> userManager)
         {
-			_borrowRepository = context;
-			this._bookRepository = _bookRepository;
-			this._webHostEnvironment = _webHostEnvironment;
-		}
+            _borrowRepository = context;
+            this._bookRepository = _bookRepository;
+            this._webHostEnvironment = _webHostEnvironment;
+            _userManager = userManager;
+        }
 
         public AppDbContext Context { get; }
 
@@ -31,11 +35,19 @@ namespace SinemaOtomasyonu.Controllers
         }
 
 		[HttpGet]
-		public IActionResult Add()
-		{
+        public async Task<IActionResult> Add()
+        {
+            IEnumerable<SelectListItem> UserList = _userManager.Users
+        .Select(u => new SelectListItem
+        {
+            Text = u.UserName,
+            Value = u.Id // Varsayılan olarak kullanıcıların ID'sini kullanabilirsiniz
+        });
 
-			
-			IEnumerable<SelectListItem> BookList = _bookRepository.GetAll()
+            // ViewBag üzerinden view'e geçirme
+            ViewBag.UserList = UserList;
+
+            IEnumerable<SelectListItem> BookList = _bookRepository.GetAll()
 				.Select(k => new SelectListItem
 				{
 					Text = k.BookName,
