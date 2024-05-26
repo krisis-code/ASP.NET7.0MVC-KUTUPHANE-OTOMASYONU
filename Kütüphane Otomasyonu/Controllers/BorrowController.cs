@@ -1,4 +1,6 @@
 ﻿using KitapKiralamaOtomasyonu.Models;
+using KitapKiralamaOtomasyonu.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,6 +11,7 @@ using SinemaOtomasyonu.Utilitiy;
 
 namespace SinemaOtomasyonu.Controllers
 {
+    [Authorize(Roles = UserRoles.Role_Admin)]
     public class BorrowController : Controller
     {
         private readonly IBookRepository _bookRepository;

@@ -1,4 +1,6 @@
 ﻿using KitapKiralamaOtomasyonu.Models;
+using KitapKiralamaOtomasyonu.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SinemaOtomasyonu.Models;
 using SinemaOtomasyonu.Utilitiy;
@@ -6,6 +8,7 @@ using SinemaOtomasyonu.Utilitiy;
 
 namespace SinemaOtomasyonu.Controllers
 {
+    [Authorize(Roles = UserRoles.Role_Admin)]
     public class BookGenresController : Controller
     {
         private readonly IBookGenreRepository _bookGenreRepository;
