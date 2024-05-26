@@ -30,7 +30,10 @@
                 <tr>
                     <td>@(Model.IndexOf(borrow) + 1)</td>
                     <td>@borrow.book.BookName</td>
-                    <td>@borrow.UserId</td>
+
+                    <td>@borrow.UserName</td>
+
+                  
                     <td>
                         <div class="col-2">
                             @if (!string.IsNullOrEmpty(borrow.book.ImageUrl))

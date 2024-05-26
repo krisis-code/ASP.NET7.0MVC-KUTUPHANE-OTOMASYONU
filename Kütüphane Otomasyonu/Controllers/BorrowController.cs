@@ -25,16 +25,24 @@ namespace SinemaOtomasyonu.Controllers
         }
 
         public AppDbContext Context { get; }
-
         public IActionResult Index()
         {
-            List<Borrow> objBarrowList = _borrowRepository.GetAll(includeProps:"book").ToList();
-			
+            List<Borrow> objBarrowList = _borrowRepository.GetAll(includeProps: "book").ToList();
+
+            // Borrow nesnelerine ilgili kullanıcı adlarını ekleyin
+            foreach (var borrow in objBarrowList)
+            {
+                var user = _userManager.FindByIdAsync(borrow.UserId.ToString()).Result;
+                borrow.UserName = user.UserName;
+            }
 
             return View(objBarrowList);
         }
+    
 
-		[HttpGet]
+
+
+    [HttpGet]
         public async Task<IActionResult> Add()
         {
             IEnumerable<SelectListItem> UserList = _userManager.Users

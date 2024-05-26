@@ -12,11 +12,17 @@ namespace KitapKiralamaOtomasyonu.Models
 		[Required]
 		public Guid UserId { get; set; }
 
-		[ValidateNever]
+        public string UserName { get; set; }
+
+        [ValidateNever]
 		public Guid BookId { get; set; }
 		[ForeignKey("BookId")]
 
 		[ValidateNever]
 		public Book book { get; set; }
+
+		
+
+
 	}
 }
