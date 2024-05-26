@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using KitapKiralamaOtomasyonu.Models;
+using Microsoft.AspNetCore.Mvc;
 using SinemaOtomasyonu.Models;
 using System.Diagnostics;
 
@@ -7,15 +8,24 @@ namespace SinemaOtomasyonu.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly BookRepository context;
+        private readonly IBookRepository _bookRepository;
+        private readonly IBookGenreRepository _bookGenreRepository;
+        public HomeController(ILogger<HomeController> logger, IBookRepository bookRepository, IBookGenreRepository bookGenreRepository)
         {
             _logger = logger;
+            _bookRepository = bookRepository;
+            _bookGenreRepository = bookGenreRepository;
         }
+
 
         public IActionResult Index()
         {
-            return View();
+            List<Book> objBookGenresList = _bookRepository.GetAll(includeProps: "BookGenres").ToList();
+
+
+            return View(objBookGenresList);
+            
         }
 
         public IActionResult Privacy()

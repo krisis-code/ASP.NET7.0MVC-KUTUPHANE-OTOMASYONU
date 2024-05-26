@@ -36,7 +36,18 @@
 					<td>@(++count)</td>
 					<td>@book.BookGenres.BookGenreName</td>
 					<td>@book.BookName</td>
-					<td>@book.Description</td>
+					<td>
+						@{
+							if (book.Description.Length > 100)
+							{
+								@book.Description.Substring(0, Math.Min(100, book.Description.Length))
+							}
+							else
+							{
+								@book.Description
+							}
+						}
+					</td>
 					<td>@book.Writer</td>
 					<td>@book.Price</td>
 					<td>
